@@ -174,3 +174,4 @@ function game() {
     playMore = confirm("Сыграть ещё раунд?");
   }
 }
+game();
