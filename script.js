@@ -1,6 +1,3 @@
-
-
-
 function playerFactory(name, mark) {
   let score = 0;
   const addPoint = () => {
@@ -33,8 +30,6 @@ function gameBoard() {
   return { setCell, getBoard, reset };
 }
 
-
-
 function gameController(player1, player2) {
   let currentPlayer = player1;
   const switchPlayer = () => {
@@ -47,8 +42,6 @@ function gameController(player1, player2) {
 
   return { switchPlayer, getCurrentPlayer, setCurrentPlayer };
 }
-
-
 
 function setupPlayers() {
   let player1Name = prompt("Введите имя первого игрока") || "Игрок 1";
@@ -69,9 +62,6 @@ function setupPlayers() {
 
   return { p1, p2 };
 }
-
-
-
 
 function askIndex(currentPlayer) {
   const input = prompt(
@@ -97,7 +87,6 @@ const winningCombination = [
   [0, 4, 8],
   [2, 4, 6],
 ];
-
 
 function checkWin(board, mark) {
   return winningCombination.some((combo) =>
@@ -135,8 +124,6 @@ function game() {
   console.log(p2.getInfo());
   console.log("Start player:", controller.getCurrentPlayer().name);
 
-
-
   function playTurn(index) {
     let currentPlayer = controller.getCurrentPlayer();
     let mark = currentPlayer.mark;
@@ -167,16 +154,12 @@ function game() {
     return "continue";
   }
 
-
-
-  
   let playMore = true;
   while (playMore) {
     board.reset();
     controller.setCurrentPlayer(p1);
     console.log("Новый раунд. Начинает:", controller.getCurrentPlayer().name);
     printBoard(board.getBoard());
-
 
     let roundRunning = true;
     while (roundRunning) {
@@ -191,4 +174,3 @@ function game() {
     playMore = confirm("Сыграть ещё раунд?");
   }
 }
-game();
