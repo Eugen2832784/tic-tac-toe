@@ -1,13 +1,6 @@
-const winningCombination = [
-  [0, 1, 2],
-  [3, 4, 5],
-  [6, 7, 8],
-  [0, 3, 6],
-  [1, 4, 7],
-  [2, 5, 8],
-  [0, 4, 8],
-  [2, 4, 6],
-];
+
+
+
 function playerFactory(name, mark) {
   let score = 0;
   const addPoint = () => {
@@ -40,6 +33,8 @@ function gameBoard() {
   return { setCell, getBoard, reset };
 }
 
+
+
 function gameController(player1, player2) {
   let currentPlayer = player1;
   const switchPlayer = () => {
@@ -52,6 +47,8 @@ function gameController(player1, player2) {
 
   return { switchPlayer, getCurrentPlayer, setCurrentPlayer };
 }
+
+
 
 function setupPlayers() {
   let player1Name = prompt("Введите имя первого игрока") || "Игрок 1";
@@ -73,6 +70,9 @@ function setupPlayers() {
   return { p1, p2 };
 }
 
+
+
+
 function askIndex(currentPlayer) {
   const input = prompt(
     `${currentPlayer.name} (${currentPlayer.mark}), выбери клетку (1–9)`,
@@ -86,6 +86,18 @@ function askIndex(currentPlayer) {
 
   return index;
 }
+
+const winningCombination = [
+  [0, 1, 2],
+  [3, 4, 5],
+  [6, 7, 8],
+  [0, 3, 6],
+  [1, 4, 7],
+  [2, 5, 8],
+  [0, 4, 8],
+  [2, 4, 6],
+];
+
 
 function checkWin(board, mark) {
   return winningCombination.some((combo) =>
@@ -123,6 +135,8 @@ function game() {
   console.log(p2.getInfo());
   console.log("Start player:", controller.getCurrentPlayer().name);
 
+
+
   function playTurn(index) {
     let currentPlayer = controller.getCurrentPlayer();
     let mark = currentPlayer.mark;
@@ -152,15 +166,18 @@ function game() {
     controller.switchPlayer();
     return "continue";
   }
+
+
+
+  
   let playMore = true;
   while (playMore) {
-    // старт раунда
     board.reset();
     controller.setCurrentPlayer(p1);
     console.log("Новый раунд. Начинает:", controller.getCurrentPlayer().name);
     printBoard(board.getBoard());
 
-    // внутренний цикл раунда
+
     let roundRunning = true;
     while (roundRunning) {
       const player = controller.getCurrentPlayer();
